@@ -1,0 +1,42 @@
+.card{
+    /* border-color: rgb(9, 9, 97); */
+    width:480px;
+    height: 100%;
+    padding: 10px;
+    margin: auto;
+}
+
+.card-head p{
+    font-size:1cm;
+    font-weight: 500px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',Verdana, sans-serif;
+    color: rgb(9, 9, 97);
+    font-style: italic
+}
+.card-head p span{
+    font-size:0.5cm;   
+}
+.signup-form input:hover{
+    background-color: rgb(146, 148, 241);
+}
+.signup-form input{
+    border: solid 2px rgb(9, 9, 97);
+}
+label{
+    font-weight: bolder;
+    text-transform: capitalize;
+    text-align: center;
+    color: rgb(9, 9, 97);
+}
+#submitButton{
+background-color:  rgb(9, 9, 97);
+margin: 10px;
+}
+@media screen and (max-width: 500px) {
+  .card {
+    flex-direction: column;
+    max-width: 300px;
+    height: auto;
+    margin-top: 50px;
+  } 
+}
