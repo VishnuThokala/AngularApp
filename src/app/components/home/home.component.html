@@ -1,1 +1,89 @@
-<p>home works!</p>
+
+<div class="sidebar">
+    <div class="logo_content">
+        <div class="logo">
+            <div class="logo_name">VISHNU THOKALA</div>
+        </div>
+       <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+       
+        <li>
+            <a (click)="setPageIndex(-1)">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+            <a (click)="setPageIndex(0)">
+                <i class='bx bx-user'></i>
+                <span class="links_name">User</span>
+            </a>
+            <span class="tooltip">User</span>
+        </li>
+        <li>
+            <a (click)="setPageIndex(1)">
+                <i class='bx bx-chat'></i>
+                <span class="links_name">Upload Quiz</span>
+            </a>
+            <span class="tooltip">Upload Quiz</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-pie-chart-alt-2'></i>
+                <span class="links_name">Analytics</span>
+            </a>
+            <span class="tooltip">Analytics</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-folder'></i>
+                <span class="links_name">File Manager</span>
+            </a>
+            <span class="tooltip">File Manager</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-cart-alt'></i>
+                <span class="links_name">Order</span>
+            </a>
+            <span class="tooltip">Order</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-heart'></i>
+                <span class="links_name">Saved</span>
+            </a>
+            <span class="tooltip">Saved</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-cog'></i>
+                <span class="links_name">Setting</span>
+            </a>
+            <span class="tooltip">Setting</span>
+        </li>
+    </ul>
+    <div class="content">
+        <div class="user">
+            <div class="user_details">
+                <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/dribble_pic.png?compress=1&resize=400x300" alt="">
+                <div class="name_job">
+                    <div class="name">{{userName}}</div>
+                </div>
+            </div>
+           <a (click)="logout()"> <i class='bx bx-log-out' id="log_out"></i></a>
+        </div>
+    </div>
+</div>
+<div class="home_content card">
+    <div class="text">Main Menu
+    </div>
+    <app-dashboard *ngIf="pageIndex=== -1"></app-dashboard>
+    <app-profile *ngIf="pageIndex=== 0"></app-profile>
+    <app-quizmaker *ngIf="pageIndex=== 1"></app-quizmaker>
+    
+</div>
+
+   

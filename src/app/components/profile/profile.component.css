@@ -1,0 +1,52 @@
+.card{
+width:auto;
+height: auto;
+color: black;
+border: #1890ff;
+}
+
+.card-head{
+    background-color: #1890ff;
+    color: white;
+    text-align: center;
+    border-left: white solid 10px;
+
+}
+
+input {
+    border:none;
+    border-bottom: 3px solid #1890ff;
+    padding: 5px 10px;
+    outline: none;
+    width: 100%;
+    margin: 10px;
+ }
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease; 
+    text-indent: -100%;
+    opacity: 1;
+ }
+input:focus {
+  border-color: green
+}
+h6{
+    color: red;
+}
+.crtans{
+    color:green;
+}
+button{
+    border: #1890ff;
+    background-color: #1890ff;
+    color: aliceblue;
+}
+div{
+    text-align: left;
+}
+#finalsubmitbtn{
+background-color: green;
+}
+.finalSubmitDiv{
+    text-align: center;
+}

@@ -1,0 +1,59 @@
+<div class="card">
+           <div class="card-body"><input type="text" placeholder="Enter Module Topic " [(ngModel)]="topic"></div>
+
+</div>
+<br>
+<div *ngFor="let q of questionArr;index as i">
+    <pre>
+
+        </pre>
+    <div class="card">
+
+        <div class="card-head">
+            Delete Question {{i+1}}? <button (click)="delete(i)"><i class="fa fa-trash del-button"></i></button>
+        </div>
+        <div class="card-body">
+            {{i+1}}. {{q}}
+            <hr>
+            <div *ngFor="let opt of optionsArr[i]; index as j">
+                {{abc[j]}}. {{opt}}
+            </div>
+
+            <hr>
+            <h6 class="crtans">{{correctAnswerArr[i]}}</h6>
+        </div>
+    </div>
+</div>
+   <br>
+
+<div class="card"> 
+
+        <div class="card-head">
+            
+            <h3>Add Questions</h3>
+            <p> Press Enter to give more options!</p>
+
+        </div>
+          <hr>
+        <div class="card-body">
+          
+            <input type="text" required placeholder="question" [(ngModel)]="question">
+            <br>
+                <div *ngFor="let opt of questionOptions;index as k">
+                   {{abc[k]}}. {{opt}}   
+                </div>
+            <input type="text" required placeholder="options" [(ngModel)]="options" (keydown.enter)="addOption()">
+           <h6>{{optval}}</h6>
+            
+           <input type="text" required placeholder="correctAnswer" [(ngModel)]="correctAnswer">
+            
+            <h6>{{validation}}</h6>
+            <button class="btn btn-primary" type="submit" (click)="addQuestion()"> ADD More</button>
+        </div>
+       
+    </div>
+
+    <div class="finalSubmitDiv">
+        <button class="btn btn-success" id="finalsubmitbtn" type="submit" (click)="submitQuestions()"> Submit</button>
+    </div>
+
