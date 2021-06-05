@@ -12,6 +12,8 @@ import { User } from 'src/app/models/user';
 export class HomeComponent implements OnInit {
   pageIndex = -1;
   userName = "";
+  user: User;
+  dp ='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ByEDqEXj2RK7wqIx8f6UVFdZ5HSYDIcmyrJ1W80QmGA-bHUT6Xm71bJ9fUQa0ns71dU&usqp=CAU'
   constructor(private _authService: AuthService,
   private _router:Router
   ) {
@@ -35,30 +37,32 @@ export class HomeComponent implements OnInit {
         sidebar.classList.toggle("active");
       }
     }
-
-    var u = this._authService.getLocalUser();
-    if (u) {
-      let user=JSON.parse(u)
-      this.userName = user.email.slice(0, -10);
+    // this._authService.setUser();
+      this._authService.setUser();
+      this.user = this._authService.getUser();
     }
-  }
+
+  
+
   logout() {
     this._authService.logout().subscribe((data) => {
       console.log("data",data);
         if (data!=null) {
         localStorage.clear();
         this._authService.isLoggedIn = false;
-        this._router.navigate(['/']);
+          this._router.navigate(['/']).then(() => {
+            window.location.reload();
+        })
       }
     },
       (err: any) => {
         console.log(err);
       })
   }
-  setPageIndex(n:number) {
+  
+
+  setPageIndex(n: number) {
     this.pageIndex = n;
   }
-
-  
 
 }

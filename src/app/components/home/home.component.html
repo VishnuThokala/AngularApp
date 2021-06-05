@@ -68,9 +68,10 @@
     <div class="content">
         <div class="user">
             <div class="user_details">
-                <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/dribble_pic.png?compress=1&resize=400x300" alt="">
+                <img [src] = "user.photoURL" >
+              
                 <div class="name_job">
-                    <div class="name">{{userName}}</div>
+                    <div class="name">{{user.displayName}}</div>
                 </div>
             </div>
            <a (click)="logout()"> <i class='bx bx-log-out' id="log_out"></i></a>
@@ -79,7 +80,9 @@
 </div>
 <div class="home_content card">
     <div class="text">Main Menu
+       
     </div>
+    
     <app-dashboard *ngIf="pageIndex=== -1"></app-dashboard>
     <app-profile *ngIf="pageIndex=== 0"></app-profile>
     <app-quizmaker *ngIf="pageIndex=== 1"></app-quizmaker>

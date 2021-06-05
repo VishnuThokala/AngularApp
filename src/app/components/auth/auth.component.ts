@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit {
    
    }
   signupResp: string="";
-  isLogin: boolean = true;
+  isLogin: boolean = false;
   isSignedUp: boolean = false;
   authForm = new FormGroup({
     password: new FormControl(''),
@@ -32,13 +32,14 @@ export class AuthComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.isLogin) {
+    if (!this.isLogin) {
       this._authService.signup(this.authForm.value).subscribe(
         (data) => {
-          this._authService.setLocalToken(data.token);
-          this._authService.setLocalUser(data.user);
           this.signupResp = "Successfully Registered";
-          this._router.navigate([''])
+          this._authService.showLoginUI = true;
+          this._router.navigate(['/login']);
+
+
         },
         (error) => {
           this.signupResp = error.msg;

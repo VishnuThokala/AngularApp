@@ -9,36 +9,62 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user: User = new User;
   isLoggedIn: boolean = false;
-  SERVER_URI: string = "http://localhost:3000/";
-  constructor(private http: HttpClient) {
-    
-   
+  SERVER_URI: string = "https://vebapi.herokuapp.com/";
+  showLoginUI: boolean = false;
+  constructor(private http: HttpClient) {   
   }
   
-  getLocalUser()  {
+  getLocalUser() {
     return localStorage.getItem('user');
-
+    
   }
   getLocalToken() {
     return localStorage.getItem('token');
   }
   setLocalUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user))
-    
+    this.setUser();
   }
   setLocalToken(token: string) {
-    localStorage.setItem('token', JSON.stringify(token))
-
+    localStorage.setItem('token', JSON.stringify(token));
   }
-   
+  setCustomClaim(claim: string) {
+    localStorage.setItem('claim', JSON.stringify(claim))
+  }
+  getCustomClaim() {
+    var claim = localStorage.getItem('claim');
+    if (claim != null)
+      return JSON.parse(claim)
+    else
+      return null;
+  }
   checkLocalStorageItem() {
-    if (localStorage.length!=2) {
+    if (localStorage.length!=3) {
       return false;
     }
     else {
       return true;
     }
   }
+  getUser(): User{
+    this.setUser();
+    return this.user;
+  }
+  setUser() {
+    var s = this.getLocalUser();
+      if(s)
+    var data = JSON.parse(s);
+    this.user = {
+      displayName: data.displayName,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+      password: data.password,
+      photoURL: data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+      uid: data.uid
+    }
+
+    }
+  
   signup(userData: { userName: any; email: any; password: any; phoneNumber: any; }): Observable<any> {
     var signup_uri = this.SERVER_URI + "userSignup";
     return this.http.post<any>(signup_uri, {
@@ -56,7 +82,7 @@ export class AuthService {
    
     console.log("authservice logout");
     var uri = this.SERVER_URI + "logout";
-    return this.http.get<any>("http://localhost:3000/logout/");
+    return this.http.get<any>(uri);
   }
 
   canActivate() {
@@ -72,8 +98,8 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getLocalToken()}`
     })
-    return this.http.post<any>(signup_uri, { 'email': userData.email, 'password': userData.password, 'displayName': userData.displayName,'uid':uid },{ headers: headers } )
+    return this.http.post<any>(signup_uri, { 'email': userData.email, 'password': userData.password, 'displayName': userData.displayName,'uid':uid ,'phoneNumber':userData.phoneNumber ,'photoURL':userData.photoURL},{ headers: headers } )
     
   }
-
+  
 }

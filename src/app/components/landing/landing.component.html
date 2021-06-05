@@ -116,8 +116,13 @@
     </div>
     
 </div>
-<div class="signup-container">
+
+<div *ngIf="!showLoginUI" class="signup-container">
     <app-auth></app-auth>
+</div>
+<div *ngIf="showLoginUI" class="signup-container">
+    <h5>Successful Signup. You can </h5>
+    <app-login></app-login>
 </div>
 
 <!-- Section 2 -->

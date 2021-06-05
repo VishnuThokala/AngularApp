@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { QuizmakerComponent } from './components/quizmaker/quizmaker.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     QuizmakerComponent,
     ProfileComponent,
     DashboardComponent,
+    PageNotFoundComponent,
    
 
   ],

@@ -2,28 +2,29 @@
     <div class="card-head">
         <h4>PROFILE</h4>
     </div>
+   
     <div class="card-body">
         <div>
-          
+            
         <form action=""  [formGroup]="profileEditForm" (ngSubmit)="editProfile()">
            <div class="form-group" >
             <label for="displayName">USER NAME</label>
-            <input type="text" name="displayName" id="displayName" formControlName="displayName"  class="form-control">
+            <input type="text" name="displayName" id="displayName" [(ngModel)]="user.displayName" formControlName="displayName"  class="form-control">
            </div>
            <br>
            <div class="form-group">
                <label for="email">
                    EMAIL
                </label>
-            <input type="email" name="email" id="email" formControlName="email"  class="form-control">
+            <input type="email" name="email" id="email" [(ngModel)]="user.email" formControlName="email"  class="form-control" [disabled]='disableEmailbox'>
 
            </div>
            <br>
            <div class="form-group">
                <label for="phoneNumber">
                    PHONE NUMBER
-               </label>
-                <input type="number" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber"  class="form-control">
+               </label>             
+                <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" formControlName="phoneNumber"  class="form-control">
 
            </div>
            <br>

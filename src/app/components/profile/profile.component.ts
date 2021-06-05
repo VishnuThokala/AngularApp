@@ -1,7 +1,8 @@
-import { FormGroup, FormBuilder, Form, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Form, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, enableProdMode } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { ɵangular_packages_router_router_b, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,50 +11,44 @@ import { User } from 'src/app/models/user';
 })
 export class ProfileComponent implements OnInit {
   user = new User;
-  
+  data :any;
+
+  disableEmailbox: boolean = false;
  
   constructor(private _authService: AuthService,
-  private  _formBuilder:FormBuilder)
+  private  _formBuilder:FormBuilder,private _router:Router)
   {
     
   };
-  profileEditForm = this._formBuilder.group({
-    displayName: this.user.displayName,
-    email: this.user.email,
-    phoneNumber: this.user.phoneNumber
+  profileEditForm = new FormGroup({
+    displayName: new FormControl({ value: ' ' }, Validators.required),
+    email: new FormControl({ value: ' ', disabled: true }, Validators.required),
+    phoneNumber: new FormControl({ value: '' }),
   })
 
  
   ngOnInit(): void {
-    this.setUser();
+    this.user = this._authService.getUser();
   }
 
-  setUser() {
-    var s = this._authService.getLocalUser();
-    if (s != null) {
-      this.user = JSON.parse(s);
+  
 
-      this.user={
-        displayName : this.user.displayName,
-        email: this.user.email,
-        phoneNumber: this.user.phoneNumber,
-        password: '',
-        uid: this.user.uid
-      }
-     
-    }
-  }
   editProfile() {
-
-    
-    this._authService.editUserProfile(this.profileEditForm.value,this.user.uid).subscribe(user => {
+    console.log(this.profileEditForm.value)
+    this.profileEditForm.value.email = this.user.email;
+    this.profileEditForm.value.photoURL = this.user.photoURL
+    console.log(this.profileEditForm.value)
+    this._authService.editUserProfile(this.profileEditForm.value, this.user.uid).subscribe(user => {
+      console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      console.log(user);
       this._authService.setLocalUser(user);
-      this.setUser();
-      console.log("successfuly edited profile")
+      this._authService.setUser();
+      this.user = this._authService.getUser();
+      window.location.reload();
     },
       (error) => {
         console.log("cant update profile Try again!",error)
-        
+        this._router.navigate(["/home"])
       }
     )
   }
