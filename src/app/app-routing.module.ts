@@ -1,3 +1,5 @@
+import { QuizAttemptComponent } from './components/quiz-attempt/quiz-attempt.component';
+import { ExamComponent } from './components/exam/exam.component';
 import { QuizmakerComponent } from './components/quizmaker/quizmaker.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +16,9 @@ const routes: Routes = [
   { path: 'home', canActivate: [AuthService], component: HomeComponent },
   { path: 'quizmaker', canActivate: [AuthService], component: QuizmakerComponent },
   { path: 'login', component: LandingComponent },
+  { path: 'exam', component: ExamComponent },
+  { path: 'attemptQuiz', component: QuizAttemptComponent },
+
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent}
   

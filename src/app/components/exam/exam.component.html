@@ -1,0 +1,46 @@
+<h2>Attempt Quiz</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">QUIZ MASTER</th>
+                <th scope="col">TOPIC</th>
+                <th scope="col">STATUS</th>
+            </tr>
+        </thead>
+        <tbody *ngIf= "quizTopic" >
+            <tr *ngFor="let res of quizTopic;index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{res.quizmaster}}</td>
+                <td>{{res.topic}}</td>
+                <td><button (click)="onAttempt(quizTopic[i].topic,quizTopic[i].quizmasterId)" class="btn btn-primary">Attempt</button></td>
+            </tr>
+            
+        </tbody>
+        <div *ngIf="load" class="text-center">
+            
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        
+        </div>
+    </table>
+</div>
+
+<!-- <div *ngIf= "quizTopic" >
+<div *ngFor="let res of quizTopic;index as i">
+{{res.quizmaster}}
+<h1>{{res.topic}}</h1>
+</div>
+</div> -->
+  

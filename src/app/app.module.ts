@@ -15,6 +15,8 @@ import { QuizmakerComponent } from './components/quizmaker/quizmaker.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { QuizAttemptComponent } from './components/quiz-attempt/quiz-attempt.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ProfileComponent,
     DashboardComponent,
     PageNotFoundComponent,
+    ExamComponent,
+    QuizAttemptComponent,
    
 
   ],

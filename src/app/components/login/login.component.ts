@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           console.log(data);
           this._authService.setLocalToken(data.token);
           this._authService.setLocalUser(data.user);
-          this._authService.setCustomClaim(data.customClaims)
+          // this._authService.setCustomClaim(data.customClaims)
           this.signupResp = "Successfully Registered";
           this._authService.isLoggedIn = true;
           this._router.navigate(['/home']);

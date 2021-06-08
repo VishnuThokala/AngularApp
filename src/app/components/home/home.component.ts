@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import 'jquery'
-import { userError } from '@angular/compiler-cli/src/transformers/util';
 import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-home',
@@ -37,9 +36,26 @@ export class HomeComponent implements OnInit {
         sidebar.classList.toggle("active");
       }
     }
-    // this._authService.setUser();
+      // this._authService.setUser();
       this._authService.setUser();
-      this.user = this._authService.getUser();
+      console.log("HOME INIT ::: this._authService.getUser();", this._authService.getUser());
+      var data = this._authService.getUser();
+    this.user = new User(data.displayName,
+      data.email,
+      data.phoneNumber,
+      data.password,
+      data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+      data.uid,
+      data.customerClaims);
+      this.user.setUserModel(data.displayName,
+      data.email,
+      data.phoneNumber,
+      data.password,
+      data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+        data.uid,
+      data.customerClaims);
+      console.log("HOME INIT ::: this.user", this.user);
+
     }
 
   

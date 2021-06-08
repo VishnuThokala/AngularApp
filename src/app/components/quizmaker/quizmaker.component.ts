@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-quizmaker',
@@ -20,11 +22,12 @@ export class QuizmakerComponent implements OnInit {
   result: string = "";
   validation = "";
   optval = "";
-  constructor( private _authService:AuthService) { }
+  constructor( private _quizService:QuizService,private _router :Router) { }
 
   ngOnInit(): void {
   }
   addQuestion() {
+    
     if (this.question == "" || this.questionOptions == [] || this.correctAnswer == "") {
       this.validation = "please fill out all fields"
     } else {
@@ -50,8 +53,8 @@ export class QuizmakerComponent implements OnInit {
   }
 
   submitQuestions() {
-    this._authService.submitQuizQuestions(this.questionArr, this.optionsArr, this.correctAnswerArr).subscribe(data => {
-      console.log(data.msg);
+    this._quizService.submitQuizQuestions(this.questionArr, this.optionsArr, this.correctAnswerArr,this.topic).subscribe(data => {
+      console.log(data);
       this.questionArr = [];
       this.optionsArr = [];
       this.correctAnswerArr = [];

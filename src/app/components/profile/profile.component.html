@@ -5,7 +5,7 @@
    
     <div class="card-body">
         <div>
-            
+            {{user|json}}
         <form action=""  [formGroup]="profileEditForm" (ngSubmit)="editProfile()">
            <div class="form-group" >
             <label for="displayName">USER NAME</label>

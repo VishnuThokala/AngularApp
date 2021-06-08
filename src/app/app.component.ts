@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,FormBuilder } from '@angular/forms';
 
@@ -9,5 +10,9 @@ import { FormControl, FormGroup,FormBuilder } from '@angular/forms';
 export class AppComponent {
 
   title = 'webapp';
+  constructor(private _authService:AuthService) {
+    
+  }
+  
  
 }

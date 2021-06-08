@@ -10,7 +10,7 @@ import { ɵangular_packages_router_router_b, Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user = new User;
+  user:User ;
   data :any;
 
   disableEmailbox: boolean = false;
@@ -28,29 +28,49 @@ export class ProfileComponent implements OnInit {
 
  
   ngOnInit(): void {
-    this.user = this._authService.getUser();
+    console.log("oninit::PROFILE this._authService.getUser()", this._authService.getUser())
+    var strdata = this._authService.getLocalUser();
+    if (strdata != null) {
+      var data = JSON.parse(strdata);
+      this.user = new User(data.displayName,
+        data.email,
+        data.phoneNumber,
+        data.password,
+        data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+        data.uid,
+        data.customerClaims)
+      this.user.setUserModel(data.displayName,
+        data.email,
+        data.phoneNumber,
+        data.password,
+        data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+        data.uid,
+        data.customerClaims);
+      console.log("oninit::PROFILE this.user", this.user);
+    }
+
   }
 
   
 
   editProfile() {
-    console.log(this.profileEditForm.value)
-    this.profileEditForm.value.email = this.user.email;
-    this.profileEditForm.value.photoURL = this.user.photoURL
-    console.log(this.profileEditForm.value)
     this._authService.editUserProfile(this.profileEditForm.value, this.user.uid).subscribe(user => {
       console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      console.log(user);
+      // console.log("before",user);
       this._authService.setLocalUser(user);
-      this._authService.setUser();
-      this.user = this._authService.getUser();
-      window.location.reload();
+      // this.ngOnInit();
+      // console.log("this._authService.getUser();", this._authService.getUser());
+      // this.user = this._authService.getUser();
+      // console.log("this.user",this.user)
+      // return this.user;
+      // // window.location.reload();
     },
       (error) => {
         console.log("cant update profile Try again!",error)
         this._router.navigate(["/home"])
       }
     )
-  }
+  
 
+}
 }

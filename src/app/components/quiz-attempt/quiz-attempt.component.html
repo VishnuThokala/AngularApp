@@ -1,0 +1,77 @@
+
+<div *ngIf="!completed"class="fluid-container">
+<div>
+<h2>TOPIC: {{title}}</h2>
+<br>
+<h3>QUIZ SETTER: {{setter}}</h3>
+<hr>
+</div>
+
+<button *ngIf="!start" class="btn btn-primary" (click)="startQuiz()">START</button>
+
+
+<div *ngIf="start">
+    <br>
+    <div>
+        <label>Correct: <button class="btn btn-success">{{correct}}</button></label>
+        <hr>
+        <label>Wrong: <button class="btn btn-danger">{{wrong}}</button></label>
+        <hr>
+    
+    </div>
+    <br>
+    <div *ngFor="let q of quiz;index as i">
+    <div *ngIf="i==0" class="card">
+        <div class="card-head">
+           <h4>{{questionCounter}}.{{q.questionformat.question}}</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr >
+                           
+                            <td>A. <button (click)="checkAnswer(q.questionformat['1'],i)" class="btn btn-light">{{q.questionformat['1']}}</button></td>
+                            <td>B. <button (click)="checkAnswer(q.questionformat['2'],i)" class="btn btn-light">{{q.questionformat['2']}}</button></td>
+                        </tr>
+                        <tr>
+            
+                            <td>C. <button (click)="checkAnswer(q.questionformat['3'],i)" class="btn btn-light">{{q.questionformat['3']}}</button></td>
+                            <td>D.<button (click)="checkAnswer(q.questionformat['4'],i)"class="btn btn-light">{{q.questionformat['4']}}</button></td>
+                        </tr>
+                    </tbody>
+                   
+                    </table>
+                    <div *ngIf="crt" >
+                        <div class="crtans" *ngIf="yes">
+                        {{q.questionformat['correctAnswer']}}
+                        </div>
+                        <div class="wrgans" *ngIf="no">
+                            {{wrongopt}}
+                        </div>
+
+                    </div>
+                    <button (click)="next()"  class="btn btn-warning">next</button>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf="completed" class="finish">
+<div class="card" >
+            <img class="card-img-top" src="https://cdn.dribbble.com/users/1913946/screenshots/5628415/dusale2.gif" alt="">
+
+    <div class="card-body">
+        <p class="card-text">SUCCESSFULLY completed</p>
+            <label>Correct: <button class="btn btn-info">{{correct}}</button></label>
+            <hr>
+            <label>Wrong: <button class="btn btn-info">{{wrong}}</button></label>
+            <hr>
+            <a [routerLink]="['/home']"><button class="btn btn-warning">HOME</button></a>
+    </div>
+</div>
+</div>

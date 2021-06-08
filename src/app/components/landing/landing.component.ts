@@ -17,6 +17,7 @@ export class LandingComponent implements OnInit {
       this._authService.setUser();
      this._router.navigate(['/home'])
     } else {
+      
       this.showLoginUI = this._authService.showLoginUI
     }
 

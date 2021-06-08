@@ -30,11 +30,11 @@
             <span class="tooltip">Upload Quiz</span>
         </li>
         <li>
-            <a href="#">
+            <a (click)="setPageIndex(2)">
                 <i class='bx bx-pie-chart-alt-2'></i>
-                <span class="links_name">Analytics</span>
+                <span class="links_name">Atttempt Quiz</span>
             </a>
-            <span class="tooltip">Analytics</span>
+            <span class="tooltip">Atttempt Quiz</span>
         </li>
         <li>
             <a href="#">
@@ -86,6 +86,7 @@
     <app-dashboard *ngIf="pageIndex=== -1"></app-dashboard>
     <app-profile *ngIf="pageIndex=== 0"></app-profile>
     <app-quizmaker *ngIf="pageIndex=== 1"></app-quizmaker>
+    <app-exam *ngIf="pageIndex=== 2"></app-exam>
     
 </div>
 
