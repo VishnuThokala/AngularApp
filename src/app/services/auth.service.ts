@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user:User;
   isLoggedIn: boolean = false;
-  SERVER_URI: string = "http://localhost:3000/";
+  SERVER_URI: string = "https://vebapi.herokuapp.com/";
   showLoginUI: boolean = false;
   constructor(private http: HttpClient) {
     console.log(" auth services constructor called ! !")
