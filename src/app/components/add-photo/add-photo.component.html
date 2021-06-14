@@ -1,0 +1,27 @@
+<div class="fluid-container">
+    <pre>
+
+    </pre>
+    <div class="card">
+        <img id="dp" src={{downloadUrl}} alt="display image">
+    </div>
+    <div class="card">
+        <label>
+            <input type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" />
+        </label>
+        
+        <button class="btn btn-warning btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+            Upload
+        </button>
+    </div>
+
+    <div *ngIf="currentFileUpload" class="progress mt-2">
+        <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+            aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+            {{ percentage }}%
+        </div>
+    </div>
+    <pre>
+
+    </pre>
+</div>

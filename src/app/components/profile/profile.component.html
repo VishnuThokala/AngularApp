@@ -1,27 +1,9 @@
 <div class="card">
-
+    <app-add-photo></app-add-photo>
     <div class="card-head">
         <h4>PROFILE</h4>
     </div>
-    <div>
-        <div class="card">
-            <img id="dp" alt="display image">
-        </div>
-        <label>
-            <input type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" />
-        </label>
-        
-        <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
-            Upload
-        </button>
-        
-        <div *ngIf="currentFileUpload" class="progress mt-2">
-            <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
-                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
-                {{ percentage }}%
-            </div>
-        </div>
-    </div>
+    
     <div class="card-body">
         <div>
             <!-- {{userData|json}} -->

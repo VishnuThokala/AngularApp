@@ -10,7 +10,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class FirebaseService {
   private basePath = '/uploads';
-  photoUrl: any;
+  downloadURL: any;
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) {
     
   }
@@ -28,17 +28,16 @@ export class FirebaseService {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
-          this.photoUrl = downloadURL;
-          console.log(this.photoUrl);
+          localStorage.setItem('photoURL', downloadURL);
+          window.location.reload();
+          console.log("in function:", downloadURL);
         });
         
       })
-    ).subscribe();
-
+    ).subscribe(() => {
+    });
+  
     return uploadTask.percentageChanges();
   }
-   
-  getPhotoUrl() {
-    return this.photoUrl;
-  }
+
 }

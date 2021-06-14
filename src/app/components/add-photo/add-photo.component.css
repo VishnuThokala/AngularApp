@@ -1,0 +1,15 @@
+.card{
+    /* border-color: rgb(9, 9, 97); */
+    width:480px;
+    height: 100%;
+    padding: 10px;
+    margin: auto;
+}
+@media screen and (max-width: 500px) {
+  .card {
+    flex-direction: column;
+    max-width: 300px;
+    height: auto;
+    margin-top: 50px;
+  } 
+}

@@ -23,6 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { environment } from '../environments/environment';
     PageNotFoundComponent,
     ExamComponent,
     QuizAttemptComponent,
+    AddPhotoComponent,
    
 
   ],

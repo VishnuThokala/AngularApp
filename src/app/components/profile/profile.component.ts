@@ -16,15 +16,11 @@ export class ProfileComponent implements OnInit {
   user:User ;
   data: any;
   userData: any;
-  selectedFiles: FileList;
-  currentFileUpload: any;
-  percentage: number;
-
+  photoURL:any;
   disableEmailbox: boolean = false;
-  downloadUrl: any;
  
   constructor(private _authService: AuthService,
-    private _formBuilder: FormBuilder, private _router: Router, private _fireService:FirebaseService) { };
+    private _formBuilder: FormBuilder, private _router: Router) { };
 
   profileEditForm = new FormGroup({
     displayName: new FormControl({ value: ' ' }, Validators.required),
@@ -32,33 +28,8 @@ export class ProfileComponent implements OnInit {
     phoneNumber: new FormControl({ value: '' }),
   })
 
-  
-  selectFile(event:any): void {
-    this.selectedFiles = event.target.files;
-  }
-
-  upload(): void {
-    const file = this.selectedFiles.item(0);
-
-    this.currentFileUpload = new FileUpload(file!);
-    this._fireService.pushFileToStorage(this.currentFileUpload).subscribe(
-      (percentage: any) => {
-        this.percentage = Math.round(percentage);
-        if (this.percentage === 100) {
-          Swal.fire('Yes', 'uploaded', 'success');
-          this.downloadUrl = this._fireService.getPhotoUrl();
-          localStorage.setItem('photoURL', this.downloadUrl)
-        }
-     
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
-
-
   ngOnInit(): void {
+    this.photoURL = localStorage.getItem('photoURL');
     var strdata = this._authService.getLocalUser();
     if (strdata != null) {
       var data = JSON.parse(strdata);
@@ -67,13 +38,12 @@ export class ProfileComponent implements OnInit {
         email: data.email,
         phoneNumber: data.phoneNumber,
         password:data.password,
-        photoURL: data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+        photoURL:this.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
         uid:data.uid,
         customerClaims: data.customerClaims
       }
     }
-    this.userData.photoURL = localStorage.getItem('photoURL') || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png'
-    // this._fireService.getDbUsers();
+
   }
 
  
@@ -88,7 +58,7 @@ export class ProfileComponent implements OnInit {
   // }
 
   editProfile() {
-    this._authService.editUserProfile(this.profileEditForm.value, this.userData.uid).subscribe(res => {
+    this._authService.editUserProfile(this.profileEditForm.value, this.userData).subscribe(res => {
       console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",res.user);
       this._authService.setLocalUser(res.user);
       var strdata = this._authService.getLocalUser();
@@ -116,7 +86,5 @@ export class ProfileComponent implements OnInit {
   
 
 }
-function photoURL(arg0: string, photoURL: any) {
-  throw new Error('Function not implemented.');
-}
+
 

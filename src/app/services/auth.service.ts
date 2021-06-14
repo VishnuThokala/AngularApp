@@ -60,7 +60,7 @@ export class AuthService {
   //     return null;
   // }
   checkLocalStorageItem():boolean {
-    if (localStorage.length!=2) {
+    if (localStorage.length!=3) {
       return false;
     }
     else {
@@ -132,13 +132,13 @@ export class AuthService {
     return this.checkLocalStorageItem()||this.isLoggedIn;
   }
   
-  editUserProfile(userData: any, uid: String): Observable<any> {
+  editUserProfile(formData: any, userData: any): Observable<any> {
     var signup_uri = this.SERVER_URI + "editProfile";
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getLocalToken()}`
     })
-    return this.http.post<User>(signup_uri, { 'email': userData.email, 'password': userData.password, 'displayName': userData.displayName,'uid':uid ,'phoneNumber':userData.phoneNumber ,'photoURL':userData.photoURL},{ headers: headers } )
+    return this.http.post<User>(signup_uri, { 'email': formData.email, 'password': formData.password, 'displayName': formData.displayName,'uid':userData.uid ,'phoneNumber':formData.phoneNumber ,'photoURL':userData.photoURL},{ headers: headers } )
     
   }
   // uploadImage(file: any, uid: any): Observable<any> {
