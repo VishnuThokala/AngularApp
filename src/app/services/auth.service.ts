@@ -109,7 +109,7 @@ export class AuthService {
   
   signup(userData: { userName: any; email: any; password: any; phoneNumber: any; }): Observable<any> {
     var signup_uri = this.SERVER_URI + "userSignup";
-    return this.http.post<User>(signup_uri, {
+    return this.http.post<any>(signup_uri, {
       'username': userData.userName,
       'email': userData.email, 'password': userData.password, 'phone': userData.phoneNumber
     })

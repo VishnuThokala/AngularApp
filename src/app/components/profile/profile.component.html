@@ -5,18 +5,18 @@
    
     <div class="card-body">
         <div>
-            {{user|json}}
+            {{userData|json}}
         <form action=""  [formGroup]="profileEditForm" (ngSubmit)="editProfile()">
            <div class="form-group" >
             <label for="displayName">USER NAME</label>
-            <input type="text" name="displayName" id="displayName" [(ngModel)]="user.displayName" formControlName="displayName"  class="form-control">
+            <input type="text" name="displayName" id="displayName" [(ngModel)]="userData.displayName" formControlName="displayName"  class="form-control">
            </div>
            <br>
            <div class="form-group">
                <label for="email">
                    EMAIL
                </label>
-            <input type="email" name="email" id="email" [(ngModel)]="user.email" formControlName="email"  class="form-control" [disabled]='disableEmailbox'>
+            <input type="email" name="email" id="email" [(ngModel)]="userData.email" formControlName="email"  class="form-control" [disabled]='disableEmailbox'>
 
            </div>
            <br>
@@ -24,7 +24,7 @@
                <label for="phoneNumber">
                    PHONE NUMBER
                </label>             
-                <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" formControlName="phoneNumber"  class="form-control">
+                <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="userData.phoneNumber" formControlName="phoneNumber"  class="form-control">
 
            </div>
            <br>

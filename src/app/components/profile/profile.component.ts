@@ -3,6 +3,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, enableProdMode } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ɵangular_packages_router_router_b, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,8 @@ import { ɵangular_packages_router_router_b, Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user:User ;
-  data :any;
+  data: any;
+  userData:any;
 
   disableEmailbox: boolean = false;
  
@@ -32,21 +34,17 @@ export class ProfileComponent implements OnInit {
     var strdata = this._authService.getLocalUser();
     if (strdata != null) {
       var data = JSON.parse(strdata);
-      this.user = new User(data.displayName,
-        data.email,
-        data.phoneNumber,
-        data.password,
-        data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
-        data.uid,
-        data.customerClaims)
-      this.user.setUserModel(data.displayName,
-        data.email,
-        data.phoneNumber,
-        data.password,
-        data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
-        data.uid,
-        data.customerClaims);
-      console.log("oninit::PROFILE this.user", this.user);
+     
+
+      this.userData = {
+        displayName: data.displayName,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        password:data.password,
+        photoURL: data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+        uid:data.uid,
+        customerClaims: data.customerClaims
+      }
     }
 
   }
@@ -54,27 +52,37 @@ export class ProfileComponent implements OnInit {
   
 
   editProfile() {
-    this._authService.editUserProfile(this.profileEditForm.value, this.user.uid).subscribe(user => {
-      console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    this._authService.editUserProfile(this.profileEditForm.value, this.userData.uid).subscribe(res => {
+      console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",res.user);
       // console.log("before",user);
-      this._authService.setLocalUser(user);
+      this._authService.setLocalUser(res.user);
       var strdata = this._authService.getLocalUser();
       if (strdata != null) {
         var data = JSON.parse(strdata);
-        this.user = new User(data.displayName,
-          data.email,
-          data.phoneNumber,
-          data.password,
-          data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
-          data.uid,
-          data.customerClaims)
+        
+        this.userData = {
+          // displayName: user.displayName,
+          // email: user.email,
+          // phoneNumber: user.phoneNumber,
+          displayName: data.displayName,
+          email: data.email,
+          phoneNumber: data.phoneNumber,
+          password: data.password,
+          photoURL: data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+          uid: data.uid,
+          customerClaims: data.customerClaims
+        }
       }
       // this.ngOnInit();
       // console.log("this._authService.getUser();", this._authService.getUser());
       // this.user = this._authService.getUser();
       // console.log("this.user",this.user)
       // return this.user;
-      // // window.location.reload();
+      this._router.navigate(['']);
+      Swal.fire('YES', 'sucessfully edited profile', 'success');
+     
+
+            
     },
       (error) => {
         console.log("cant update profile Try again!",error)

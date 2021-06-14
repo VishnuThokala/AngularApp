@@ -39,16 +39,14 @@ export class AuthComponent implements OnInit {
           this.signupResp = "Successfully Registered";
           this._authService.showLoginUI = true;
           this._router.navigate(['/login']);
-
-
         },
         (error) => {
           this.signupResp = error.error.msg;
           Swal.fire('No!', error.error.msg, 'error')
-          console.log("eoororeddy", error);
+          console.log("eoororeddy", error.error);
         }
       
-      )
+      );
       console.log(this.authForm.value);
 
     }

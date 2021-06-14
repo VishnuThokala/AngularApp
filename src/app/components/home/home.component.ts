@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  pageIndex = -1;
+  pageIndex = 0;
   userName = "";
   user: User;
   dp ='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ByEDqEXj2RK7wqIx8f6UVFdZ5HSYDIcmyrJ1W80QmGA-bHUT6Xm71bJ9fUQa0ns71dU&usqp=CAU'
