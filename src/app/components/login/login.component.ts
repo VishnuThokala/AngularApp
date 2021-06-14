@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -33,8 +34,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
    
-      this._authService.login(this.authForm.value).subscribe(
-        (data) => {
+    this._authService.login(this.authForm.value).subscribe(
+      (data: any) => {
+        
           console.log(data);
           this._authService.setLocalToken(data.token);
           this._authService.setLocalUser(data.user);
@@ -43,11 +45,13 @@ export class LoginComponent implements OnInit {
           this._authService.isLoggedIn = true;
           this._router.navigate(['/home']);
           this._authService.showLoginUI = false;
-        }
-      ),
-      (error:any)=> {
-        this.signupResp = error.msg;
-        this._router.navigate([''])
-    }
+        
+      }, (error) => {
+        this.signupResp = error.error.msg;
+        Swal.fire('No!', error.error.msg, 'error')
+        console.log("eoororeddy", error);
+      }
+    );
+      
  }
 }

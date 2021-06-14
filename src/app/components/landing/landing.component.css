@@ -10,8 +10,8 @@ body {
 }
 strong { font-weight: 600; }
 
-a { color: #856dc0; border-bottom: 1px dashed #856dc0; text-decoration: none; transition: all .3s; cursor: pointer; }
-a:hover, a:focus { color: #856dc0; border: 0; text-decoration: none; }
+a { color: #007bff; border-bottom: 1px dashed #007bff; text-decoration: none; transition: all .3s; cursor: pointer; }
+a:hover, a:focus { color: #007bff; border: 0; text-decoration: none; }
 
 h1, h2 { margin-top: 10px; font-size: 38px; font-weight: 300; color: #555; line-height: 50px; font-style: italic; }
 h3 { font-size: 22px; font-weight: 300; color: #555; line-height: 30px; font-style: italic; }
@@ -20,8 +20,8 @@ img { max-width: 100%; }
 
 .medium-paragraph { font-size: 17px; line-height: 32px; }
 
-::-moz-selection { background: #7762ac; color: #fff; text-shadow: none; }
-::selection { background: #7762ac; color: #fff; text-shadow: none; }
+::-moz-selection { background: #007bff; color: #fff; text-shadow: none; }
+::selection { background: #007bff; color: #fff; text-shadow: none; }
 
 
 /***** General style, all sections *****/
@@ -52,11 +52,11 @@ img { max-width: 100%; }
 /***** Top menu *****/
 
 .navbar {
-	background: rgb(34, 34, 105);
+	background: #007bff;
 	-o-transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -ms-transition: all .6s; transition: all .6s;
 	backface-visibility: hidden;
 }
-.navbar.navbar-no-bg { background: rgb(34, 34, 105); background: rgba(0, 0, 0, 0.2); }
+.navbar.navbar-no-bg { background: #007bff; background: rgba(0, 0, 0, 0.2); }
 
 .navbar-dark .navbar-nav { font-size: 15px; color: #fff; text-transform: uppercase; }
 .navbar-dark .navbar-nav .nav-link { color: #fff; color: rgba(255, 255, 255, 0.8); border: 0; }
@@ -67,7 +67,7 @@ img { max-width: 100%; }
 
 .navbar-brand {
 	width: 105px;
-	background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRELYL0GXuHqlEbuB1Ss6XxGj2mTCvel7xOOw&usqp=CAU') center no-repeat;
+	background: url('https://www.seekpng.com/png/detail/84-842112_good-news-support-ministries-transparent-world-icon-png.png') center no-repeat;
 	border: 0;
 	text-indent: -99999px;
 }
@@ -90,14 +90,14 @@ img { max-width: 100%; }
 .section-1-box .section-1-box-icon {
 	width: 80px; height: 80px; margin: 0 auto;
 	
-	background: #7762ac; /* Old browsers */
-	background: -moz-linear-gradient(top,  #856dc0 0%, #7762ac 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#856dc0), color-stop(100%,#7762ac)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #856dc0 0%,#7762ac 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #856dc0 0%,#7762ac 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #856dc0 0%,#7762ac 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #856dc0 0%,#7762ac 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#856dc0', endColorstr='#7762ac',GradientType=0 ); /* IE6-9 */
+	background: #007bff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #007bff 0%, #007bff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#007bff), color-stop(100%,#007bff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #007bff 0%,#007bff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #007bff 0%,#007bff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #007bff 0%,#007bff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #007bff 0%,#007bff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007bff', endColorstr='#007bff',GradientType=0 ); /* IE6-9 */
 
     font-size: 40px; color: #fff; line-height: 80px; text-align: center;
     -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
@@ -121,14 +121,14 @@ img { max-width: 100%; }
 .section-3-box .section-3-box-icon {
 	width: 60px; height: 60px; margin: 0 auto;
 	
-	background: #7762ac; /* Old browsers */
-	background: -moz-linear-gradient(top,  #856dc0 0%, #7762ac 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#856dc0), color-stop(100%,#7762ac)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #856dc0 0%,#7762ac 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #856dc0 0%,#7762ac 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #856dc0 0%,#7762ac 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #856dc0 0%,#7762ac 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#856dc0', endColorstr='#7762ac',GradientType=0 ); /* IE6-9 */
+	background: #007bff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #007bff 0%, #007bff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#007bff), color-stop(100%,#007bff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #007bff 0%,#007bff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #007bff 0%,#007bff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #007bff 0%,#007bff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #007bff 0%,#007bff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007bff', endColorstr='#007bff',GradientType=0 ); /* IE6-9 */
 	
     font-size: 28px; color: #fff; line-height: 60px; text-align: center;
     -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
@@ -165,9 +165,9 @@ footer { padding: 40px 0; }
 
 @media (max-width: 767px) {
 	
-	.navbar.navbar-no-bg { background: rgb(34, 34, 105); }
+	.navbar.navbar-no-bg { background: #007bff; }
 	.navbar-dark .navbar-toggler { border-color: #444; }
-	.navbar-dark .navbar-toggler:focus { background: rgb(34, 34, 105); outline: 0; }
+	.navbar-dark .navbar-toggler:focus { background: #007bff; outline: 0; }
 	.navbar-expand-md .navbar-nav .nav-link { padding-top: 0.3rem; padding-bottom: 0.3rem; }
 
 	.inner-bg { padding: 100px 0 80px 0; }
@@ -202,7 +202,7 @@ only screen and (                min-resolution: 2dppx) {
 	
 	/* logo */
     .navbar-brand {
-    	background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRELYL0GXuHqlEbuB1Ss6XxGj2mTCvel7xOOw&usqp=CAU') !important; background-repeat: no-repeat !important; background-size: 105px 33px !important;
+    	background-image: url('https://www.seekpng.com/png/detail/84-842112_good-news-support-ministries-transparent-world-icon-png.png') !important; background-repeat: no-repeat !important; background-size: 105px 33px !important;
     }
 	
 }

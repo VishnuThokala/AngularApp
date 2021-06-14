@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user:User;
   isLoggedIn: boolean = false;
-  SERVER_URI: string = "https://vebapi.herokuapp.com/";
+  SERVER_URI: string = "http://localhost:8000/";
   showLoginUI: boolean = false;
   constructor(private http: HttpClient) {
     console.log(" auth services constructor called ! !")
@@ -108,7 +108,7 @@ export class AuthService {
     }
   
   signup(userData: { userName: any; email: any; password: any; phoneNumber: any; }): Observable<any> {
-    var signup_uri = this.SERVER_URI + "adminSignup";
+    var signup_uri = this.SERVER_URI + "userSignup";
     return this.http.post<User>(signup_uri, {
       'username': userData.userName,
       'email': userData.email, 'password': userData.password, 'phone': userData.phoneNumber

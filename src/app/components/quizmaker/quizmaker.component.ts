@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { QuizService } from 'src/app/services/quiz.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-quizmaker',
@@ -51,14 +52,19 @@ export class QuizmakerComponent implements OnInit {
       this.optionsArr.splice(i, 1);
     }
   }
-
+  
+  alertWithSuccess() {
+    Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
+  }
+  
   submitQuestions() {
     this._quizService.submitQuizQuestions(this.questionArr, this.optionsArr, this.correctAnswerArr,this.topic).subscribe(data => {
       console.log(data);
       this.questionArr = [];
       this.optionsArr = [];
       this.correctAnswerArr = [];
-      this.result="Quiz successfully stored"
+      this.result = "Quiz successfully stored"
+      this.alertWithSuccess();
     })
       ,
       (err:any) => {

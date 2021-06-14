@@ -6,10 +6,10 @@
   font-family: "Poppins" , sans-serif;
 }
 :host{
-    --black-color:rgb(34, 34, 105);;
+    --black-color:#007bff;;
     --white-color:#fff;
     --sky-color:#E4E9F7;
-    --light-black:rgb(68, 68, 139);;
+    --light-black:#007bff;;
 }
 body{
   position: relative;

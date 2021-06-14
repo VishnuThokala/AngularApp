@@ -58,6 +58,17 @@ export class ProfileComponent implements OnInit {
       console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       // console.log("before",user);
       this._authService.setLocalUser(user);
+      var strdata = this._authService.getLocalUser();
+      if (strdata != null) {
+        var data = JSON.parse(strdata);
+        this.user = new User(data.displayName,
+          data.email,
+          data.phoneNumber,
+          data.password,
+          data.photoURL || 'https://www.kindpng.com/picc/m/381-3817314_transparent-groups-of-people-png-user-icon-round.png',
+          data.uid,
+          data.customerClaims)
+      }
       // this.ngOnInit();
       // console.log("this._authService.getUser();", this._authService.getUser());
       // this.user = this._authService.getUser();

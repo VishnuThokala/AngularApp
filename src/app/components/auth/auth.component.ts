@@ -2,6 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-auth',
@@ -42,10 +43,10 @@ export class AuthComponent implements OnInit {
 
         },
         (error) => {
-          this.signupResp = error.msg;
-          this._router.navigate(['']);
+          this.signupResp = error.error.msg;
+          Swal.fire('No!', error.error.msg, 'error')
+          console.log("eoororeddy", error);
         }
-      
       
       )
       console.log(this.authForm.value);

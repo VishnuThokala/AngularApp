@@ -20,8 +20,8 @@ body {
 }
 
 
-::-moz-selection { background: #7762ac; color: #fff; text-shadow: none; }
-::selection { background: #7762ac; color: #fff; text-shadow: none; }
+::-moz-selection { background: #007bff; color: #fff; text-shadow: none; }
+::selection { background: #007bff; color: #fff; text-shadow: none; }
 
 
 /***** General style, all sections *****/

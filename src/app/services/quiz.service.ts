@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class QuizService {
  
-  SERVER_URI = "https://vebapi.herokuapp.com/"
+  SERVER_URI = "http://localhost:8000/"
   myquestion: MyQuestion = new MyQuestion;
   myQuestionArr: MyQuestion[] = [];
   quiz: any;
