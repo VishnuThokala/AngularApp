@@ -1,11 +1,12 @@
 <div class="card">
+
     <div class="card-head">
         <h4>PROFILE</h4>
     </div>
    
     <div class="card-body">
         <div>
-            {{userData|json}}
+            <!-- {{userData|json}} -->
         <form action=""  [formGroup]="profileEditForm" (ngSubmit)="editProfile()">
            <div class="form-group" >
             <label for="displayName">USER NAME</label>
@@ -29,9 +30,18 @@
            </div>
            <br>
            <button type="submit" class="btn btn-primary">EDIT PROFILE</button>
-            
+            <br>
+            <hr>
+            <label id="margin" for="img">Select image:</label>
+            <input type="file" id="img" class="btn btn-info" name="img" accept="image/*">
+            <br>
+            <input id="url" type="text" name="url" hidden>
+            <br>
 
+            <button class='btn btn-info' type="button" (click)="addImage()">Upload</button>
+          
         </form>
         </div>
-    </div>
+    </div> 
+   
 </div>

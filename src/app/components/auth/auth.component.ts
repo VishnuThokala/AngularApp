@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
         (error) => {
           this.signupResp = error.error.msg;
           Swal.fire('No!', error.error.msg, 'error')
-          console.log("eoororeddy", error.error);
+          console.log("eoororeddy", error);
         }
       
       );

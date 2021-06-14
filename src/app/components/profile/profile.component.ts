@@ -1,9 +1,9 @@
 import { FormGroup, FormBuilder, Form, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit, enableProdMode } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { ɵangular_packages_router_router_b, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,15 +13,14 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit {
   user:User ;
   data: any;
-  userData:any;
+  userData: any;
+  
 
   disableEmailbox: boolean = false;
  
   constructor(private _authService: AuthService,
-  private  _formBuilder:FormBuilder,private _router:Router)
-  {
-    
-  };
+  private  _formBuilder:FormBuilder,private _router:Router){};
+
   profileEditForm = new FormGroup({
     displayName: new FormControl({ value: ' ' }, Validators.required),
     email: new FormControl({ value: ' ', disabled: true }, Validators.required),
@@ -34,8 +33,6 @@ export class ProfileComponent implements OnInit {
     var strdata = this._authService.getLocalUser();
     if (strdata != null) {
       var data = JSON.parse(strdata);
-     
-
       this.userData = {
         displayName: data.displayName,
         email: data.email,
@@ -46,24 +43,27 @@ export class ProfileComponent implements OnInit {
         customerClaims: data.customerClaims
       }
     }
-
   }
 
-  
+ 
+  addImage() {
+    let img = (<HTMLInputElement>document.getElementById('img')).files;
+    if (img?.length) {
+      console.log(img[0]);
+      this._authService.uploadImage(img[0],this.userData.uid).subscribe((data) => {
+        console.log(data);
+      })
+    }
+  }
 
   editProfile() {
     this._authService.editUserProfile(this.profileEditForm.value, this.userData.uid).subscribe(res => {
       console.log("successfuly edited profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",res.user);
-      // console.log("before",user);
       this._authService.setLocalUser(res.user);
       var strdata = this._authService.getLocalUser();
       if (strdata != null) {
         var data = JSON.parse(strdata);
-        
         this.userData = {
-          // displayName: user.displayName,
-          // email: user.email,
-          // phoneNumber: user.phoneNumber,
           displayName: data.displayName,
           email: data.email,
           phoneNumber: data.phoneNumber,
@@ -73,23 +73,15 @@ export class ProfileComponent implements OnInit {
           customerClaims: data.customerClaims
         }
       }
-      // this.ngOnInit();
-      // console.log("this._authService.getUser();", this._authService.getUser());
-      // this.user = this._authService.getUser();
-      // console.log("this.user",this.user)
-      // return this.user;
       this._router.navigate(['']);
-      Swal.fire('YES', 'sucessfully edited profile', 'success');
-     
-
-            
+      Swal.fire('YES', 'sucessfully edited profile', 'success');     
     },
       (error) => {
         console.log("cant update profile Try again!",error)
         this._router.navigate(["/home"])
       }
     )
+  }
   
 
-}
 }

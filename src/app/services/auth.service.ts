@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  
   user:User;
   isLoggedIn: boolean = false;
   SERVER_URI: string = "http://localhost:8000/";
@@ -139,6 +140,16 @@ export class AuthService {
     })
     return this.http.post<User>(signup_uri, { 'email': userData.email, 'password': userData.password, 'displayName': userData.displayName,'uid':uid ,'phoneNumber':userData.phoneNumber ,'photoURL':userData.photoURL},{ headers: headers } )
     
+  }
+  uploadImage(file: any, uid: any): Observable<any> {
+    console.log("file:", file);
+    var uri = this.SERVER_URI + "updateFile";
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getLocalToken()}`
+    })
+    return this.http.post<any>(uri, {'file':file,'uid':uid}, { headers: headers })
+
   }
   
 }
