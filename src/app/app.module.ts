@@ -22,9 +22,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-// import { firebaseConfig } from '../assets/utils/firebase.js';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
-import { firebaseConfig } from '../../config'
+import { environment } from 'src/environments/environment.prod';
+
+
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { firebaseConfig } from '../../config'
     AppRoutingModule,
 
     
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.conifg),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule // storage
