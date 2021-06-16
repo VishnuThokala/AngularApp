@@ -246,7 +246,7 @@ body{
   width:calc(100% - 78px);
   left:78px;
   /* background:var(--sky-color); */
-  padding:20px;
+  /* padding:20px; */
   /* box-shadow: 0 5px 10px rgba(0,0,0,0.2); */
   transition:all 0.5s ease;
 }
@@ -262,8 +262,14 @@ body{
   margin-bottom:15px;
   padding: 10px;
   background-color: var(--black-color);
+  
 }
 .home_content p{
   margin-bottom:15px;
+}
+hr{
+  color: #fff;
+  height: 2px;
+  background-color: #fff;
 }
         
