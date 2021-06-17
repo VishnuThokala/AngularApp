@@ -1,11 +1,10 @@
-import { FirebaseService } from './services/firebase.service';
 import { ChartsModule } from 'ng2-charts';
 import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,10 +25,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { DataTableComponent } from './components/data-table/data-table.component';
-import { QuizService } from './services/quiz.service';
-import {DataTablesModule} from 'angular-datatables';
 
 
 
@@ -47,8 +42,6 @@ import {DataTablesModule} from 'angular-datatables';
     ExamComponent,
     QuizAttemptComponent,
     AddPhotoComponent,
-    FileUploadComponent,
-    DataTableComponent,
    
 
   ],
@@ -61,7 +54,6 @@ import {DataTablesModule} from 'angular-datatables';
     RouterModule,
     AppRoutingModule,
     ChartsModule,
-    DataTablesModule,
 
     
     AngularFireModule.initializeApp(environment.conifg),
@@ -69,10 +61,7 @@ import {DataTablesModule} from 'angular-datatables';
     AngularFireAuthModule, // auth
     AngularFireStorageModule // storage
   ],
-  providers: [AuthService,QuizService,FirebaseService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-
