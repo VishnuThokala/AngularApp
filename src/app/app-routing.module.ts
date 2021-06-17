@@ -1,3 +1,4 @@
+import { ProfileComponent } from './components/profile/profile.component';
 import { QuizAttemptComponent } from './components/quiz-attempt/quiz-attempt.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { QuizmakerComponent } from './components/quizmaker/quizmaker.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'login', component: LandingComponent },
   { path: 'exam', component: ExamComponent },
   { path: 'attemptQuiz', component: QuizAttemptComponent },
-  {path:'dataTable',component:DataTableComponent},
+  { path: 'dataTable', component: DataTableComponent },
+  {path:'profile',component:ProfileComponent},
 
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent}

@@ -1,6 +1,21 @@
 
 <div>
     <h1>Data table</h1>
+    <table id="datatable"class="table table-striped table-bordered table-sm row-border hover" dtOptions="dtOptions">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let group of data">
+                <td>{{group.name}}</td>
+                <td>{{group.email}}</td>
+                <td>{{group.website}}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <app-home></app-home>
 </div>

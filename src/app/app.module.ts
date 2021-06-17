@@ -29,6 +29,7 @@ import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { QuizService } from './services/quiz.service';
+import {DataTablesModule} from 'angular-datatables';
 
 
 
@@ -60,6 +61,7 @@ import { QuizService } from './services/quiz.service';
     RouterModule,
     AppRoutingModule,
     ChartsModule,
+    DataTablesModule,
 
     
     AngularFireModule.initializeApp(environment.conifg),
@@ -71,3 +73,6 @@ import { QuizService } from './services/quiz.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
