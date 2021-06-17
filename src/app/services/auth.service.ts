@@ -151,5 +151,16 @@ export class AuthService {
   //   return this.http.post<any>(uri, {'file':file,'uid':uid}, { headers: headers })
 
   // }
+
+
+  fileUpload(formData: FormData): Observable<any> {
+    var uri = this.SERVER_URI + "uploadfiles";
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getLocalToken()}`
+    })
+    return this.http.post(uri, formData,{ headers: headers } );
+      
+  }
   
 }

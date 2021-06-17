@@ -8,6 +8,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LandingComponent },
   { path: 'exam', component: ExamComponent },
   { path: 'attemptQuiz', component: QuizAttemptComponent },
+  {path:'dataTable',component:DataTableComponent},
 
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent}

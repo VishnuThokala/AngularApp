@@ -38,18 +38,18 @@
             <span class="tooltip">Atttempt Quiz</span>
         </li>
         <li>
-            <a href="#">
+            <a (click)="setPageIndex(3)">
                 <i class='bx bx-folder'></i>
-                <span class="links_name">File Manager</span>
+                <span class="links_name">File Upload</span>
             </a>
-            <span class="tooltip">File Manager</span>
+            <span class="tooltip">File Upload</span>
         </li>
         <li>
-            <a href="#">
+            <a [routerLink]="['/dataTable']">
                 <i class='bx bx-cart-alt'></i>
-                <span class="links_name">Order</span>
+                <span class="links_name">Data Table</span>
             </a>
-            <span class="tooltip">Order</span>
+            <span class="tooltip">data Table</span>
         </li>
         <li>
             <a href="#">
@@ -88,7 +88,7 @@
     <app-profile *ngIf="pageIndex=== 0"></app-profile>
     <app-quizmaker *ngIf="pageIndex=== 1"></app-quizmaker>
     <app-exam *ngIf="pageIndex=== 2"></app-exam>
-    
+    <app-file-upload  *ngIf="pageIndex=== 3" >  </app-file-upload>
 </div>
 
    
