@@ -1,27 +1,24 @@
 <div class="fluid-container">
-    <div class="card">
-        <h3>Enter Files to submit!</h3>
-            <form [formGroup]="myForm" (ngSubmit)="submit()">
-            
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input formControlName="name" id="name" type="text" class="form-control">
-                    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                        <div *ngIf="f.name.errors!.required">Name is required.</div>
-                        <div *ngIf="f.name.errors!.minlength">Name should be 3 character.</div>
-                    </div>
-                </div>
-            
-                <div class="form-group">
-                    <label for="file">File</label>
-                    <input formControlName="file" id="file" type="file" multiple class="form-control"
-                        (change)="onFileChange($event)">
-                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-                        <div *ngIf="f.file.errors!.required">File is required.</div>
-                    </div>
-                </div>
-            
-                <button class="btn btn-warning" type="submit">Submit</button>
-            </form>
+
+    <div *ngIf="image" class="card">
+        <div class="card-body">
+            <img src={{imageUrl}} alt="profilepic">
+        </div>
     </div>
+    <div class="card">
+    <form (ngSubmit)="submit()">
+    <label>
+        Title:
+        <input type="text"  (change)="onTitleChanged($event)" />
+    </label>
+    <br />
+    <label>
+        Cover:
+        <input type="file" accept="image/*"  (change)="onImageChanged($event)" />
+    </label>
+    <br />
+    <button>UPLOAD</button>
+    </form>
+    </div>
+    <button (click)='getFiles()'>GET files </button>
 </div>

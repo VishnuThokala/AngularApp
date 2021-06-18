@@ -153,14 +153,24 @@ export class AuthService {
   // }
 
 
-  fileUpload(formData: FormData): Observable<any> {
+  fileUpload(formData:any): Observable<any> {
+    console.log(formData.get('cover'))
+    console.log(formData.get('title'))
     var uri = this.SERVER_URI + "uploadfiles";
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.getLocalToken()}`
+      'Accept': 'application/json'
     })
-    return this.http.post(uri, formData,{ headers: headers } );
+    return this.http.post<any>('https://29487e05b25a.ngrok.io/book/', formData, { headers: headers});
       
   }
-  
+
+  fileget(): Observable<any> {
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Accept': 'application/json'
+    })
+    return this.http.get<any>('  http://29487e05b25a.ngrok.io/book/', { headers: headers });
+
+  }
 }
